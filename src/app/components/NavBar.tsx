@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <>
       {pathname === "/login" || pathname === "/" ? null : (
-        <header className="w-72 bg-gradient-to-b  from-[#B45ECD] to-[#5903A4] ">
+        <header className="min-w-72 bg-gradient-to-b  from-[#B45ECD] to-[#5903A4] ">
           <div className="flex flex-col justify-between h-full">
             <nav className="p-5">
               <Image src={logo} alt="logo" className="w-6 " />
