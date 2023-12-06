@@ -10,7 +10,7 @@ const NavBar = () => {
     <header className="w-72 bg-gradient-to-b  from-[#B45ECD] to-[#5903A4] ">
       <div className="flex flex-col justify-between h-full">
         <nav className="p-5">
-          <Image src={logo} alt="logo" className="w-10 " />
+          <Image src={logo} alt="logo" className="w-6 " />
           <ul className="mt-14 text-white text-base">
             <li className="flex mb-4">
               <Image src={dashLogo} alt="dashboard" className="mr-3.5" />
@@ -28,7 +28,7 @@ const NavBar = () => {
               <span className="absolute left-4 bottom-0.5 text-3xl ">+</span>
               add trades
             </button>
-            <div className="flex flex-row items-center justify-between pt-5">
+            <div className="flex flex-row items-center justify-between pt-5 cursor-pointer">
               <p>Sébastien</p>
               <Image src={settings} alt="settings" />
             </div>
