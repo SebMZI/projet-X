@@ -4,6 +4,7 @@ import reportsLogo from "@/app/assets/icons/reports.svg";
 import settings from "@/app/assets/icons/settings.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
   return (
@@ -14,11 +15,11 @@ const NavBar = () => {
           <ul className="mt-14 text-white text-base">
             <li className="flex mb-4">
               <Image src={dashLogo} alt="dashboard" className="mr-3.5" />
-              <Link href={"#"}>Dashboard</Link>
+              <Link href="/dashboard">Dashboard</Link>
             </li>
             <li className="flex">
               <Image src={reportsLogo} alt="reports" className="mr-3.5" />
-              <Link href={"#"}>Reports</Link>
+              <Link href="/reports">Reports</Link>
             </li>
           </ul>
         </nav>
@@ -35,7 +36,7 @@ const NavBar = () => {
           </div>
           <div className="w-full h-[1px] bg-[#F8F8F8] opacity-30"></div>
           <div className="p-4">
-            <Link href={"#"}>Legal notices</Link>
+            <Link href="/legal-notices">Legal notices</Link>
           </div>
         </div>
       </div>
