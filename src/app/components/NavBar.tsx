@@ -24,7 +24,7 @@ const NavBar = () => {
                 </li>
                 <li className="flex">
                   <Image src={reportsLogo} alt="reports" className="mr-3.5" />
-                  <Link href="/reports">Reports</Link>
+                  <Link href="/dashboard/reports">Reports</Link>
                 </li>
               </ul>
             </nav>
