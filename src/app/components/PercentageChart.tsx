@@ -1,10 +1,7 @@
 "use client";
-import { ApexOptions } from "apexcharts";
-import dynamic from "next/dynamic";
-import { useState, useEffect, useRef } from "react";
 
-// Utilisez dynamic pour importer ApexChart de manière dynamique côté client
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import { ApexOptions } from "apexcharts";
+import ReactApexChart from "react-apexcharts";
 
 const PercentageChart = () => {
   let option = {
@@ -62,11 +59,13 @@ const PercentageChart = () => {
   };
 
   let chartOptions: ApexOptions = {
+    series: [69],
+
     chart: {
       height: 260,
       //   type: "radialBar",
     },
-    series: [69],
+
     colors: ["#5903A4"],
     plotOptions: {
       radialBar: {
@@ -113,7 +112,12 @@ const PercentageChart = () => {
     labels: ["Day win"],
   };
 
-  return <div className="w-full">{<Chart options={chartOptions} series={chartOptions.serie} type="radialBar" width="350" />}</div>;
+  return (
+    <div className="w-full">
+      {/* Utilisez Chart à la place de react-apexcharts */}
+      {<ReactApexChart options={chartOptions} series={chartOptions.series} type="radialBar" width="350" />}
+    </div>
+  );
 };
 
 export default PercentageChart;
