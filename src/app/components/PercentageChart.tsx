@@ -5,10 +5,9 @@ import ReactApexChart from "react-apexcharts";
 const PercentageChart = () => {
   let chartOptions: ApexOptions = {
     series: [69],
-
     chart: {
       height: 260,
-      //   type: "radialBar",
+      type: "radialBar",
     },
 
     colors: ["#5903A4"],
@@ -59,7 +58,6 @@ const PercentageChart = () => {
 
   return (
     <div className="w-full">
-      {/* Utilisez Chart à la place de react-apexcharts */}
       {<ReactApexChart options={chartOptions} series={chartOptions.series} type="radialBar" width="350" />}
     </div>
   );
