@@ -4,6 +4,7 @@ import DownArrowIcon from "../assets/icons/Arrow down.svg";
 import DollarIcon from "../assets/icons/Dollar.svg";
 import ListIcon from "../assets/icons/list.svg";
 import PercentageChart from "../components/PercentageChart";
+import DailyPnlChart from "../components/DailyPnlChart";
 
 const Page = () => {
   return (
@@ -39,6 +40,10 @@ const Page = () => {
           <div className="w-4/12">
             <PercentageChart />
           </div>
+        </div>
+        {/* {container big charts} */}
+        <div>
+          <DailyPnlChart />
         </div>
       </section>
     </main>
