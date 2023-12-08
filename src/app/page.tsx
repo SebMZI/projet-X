@@ -8,7 +8,7 @@ import circleIcon from "@/app/assets/icons/circleIcon.svg";
 
 export default function Home() {
   return (
-    <div className="h-screen  w-full">
+    <div className="min-h-screen w-full">
       <header className="bg-primary  w-full h-fit  px-20 py-5 flex flex-row justify-between items-center">
         <div className="flex flex-row gap-4 items-center">
           <Image src={logoIcon} alt="projet x logo" />
@@ -33,8 +33,8 @@ export default function Home() {
           <Button />
         </div>
       </header>
-      <main className="h-full w-full">
-        <section className="relative w-full h-full bg-gradient-to-b from-primary to-secondary pl-20  flex flex-row justify-between items-center">
+      <main className=" w-full">
+        <section className="relative w-full h-screen bg-gradient-to-b from-primary to-secondary pl-20  flex flex-row justify-between items-center">
           <div className="text-white flex flex-col items-start justify-between basis-2/5  ">
             <h1 className="text-6xl pb-8">
               Conceive a trading journal coupled with an integrated analytics
@@ -57,6 +57,22 @@ export default function Home() {
             alt="circle icon"
             className="absolute left-[30%] top-0"
           />
+        </section>
+        <section className="h-full w-full bg-white py-[90px]">
+          <div className="w-full flex flex-col items-center pb-20">
+            <h2 className="bg-gradient-to-r from-primary to-secondary inline-block bg-clip-text text-transparent font-semibold text-6xl pb-4">
+              TAKE ADVANTAGE OF YOUR DATA
+            </h2>
+            <p className="w-2/4 text-center">
+              Leverage the power of data through strategic journaling. By
+              meticulously recording your trading experiences, you unlock
+              valuable insights, enabling you to make informed decisions and
+              optimize your path to success. With every entry, you take full
+              advantage of your data, turning raw information into a strategic
+              asset that propels your trading endeavors to new heights.
+            </p>
+          </div>
+          <div>cc</div>
         </section>
       </main>
     </div>

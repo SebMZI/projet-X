@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen w-screen overflow-hidden flex flex-row ">
+      <body className="h-screen w-screen overflow-x-hidden flex flex-row ">
         <NavBar />
         {children}
       </body>
