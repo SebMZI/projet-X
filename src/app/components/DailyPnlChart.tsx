@@ -20,34 +20,41 @@ const DailyPnlChart = () => {
     },
     plotOptions: {
       bar: {
+        borderRadius: 5,
+
         colors: {
           ranges: [
             {
               from: negative,
               to: 0,
-              color: "black",
+              color: "rgba(242, 106, 106, 0.854)",
             },
             {
               from: 0,
               to: positive,
-              color: "#B45ECD",
+              color: "#5e89edda",
             },
           ],
         },
-        columnWidth: "80%",
+        columnWidth: "90%",
       },
+    },
+    stroke: {
+      show: true, // Active la bordure
+      width: 1, // Largeur de la bordure
+      colors: ["gray"], // Couleur de la bordure
     },
     dataLabels: {
       enabled: false,
     },
     title: {
       text: "Net Daily P&L",
-      offsetY: 0,
+      offsetY: 10,
       align: "center",
 
       style: {
-        fontSize: "22px",
-        color: "#5903A4",
+        fontSize: "18px",
+        color: "black",
       },
     },
     yaxis: {
@@ -71,9 +78,8 @@ const DailyPnlChart = () => {
   console.log(arrayData, negative);
 
   return (
-    <div className="w-full">
-      {/* Utilisez Chart à la place de react-apexcharts */}
-      {<ReactApexChart options={chartOptions} series={chartOptions.series} type="bar" width="500" />}
+    <div className=" min-w-[470px] rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      {<ReactApexChart options={chartOptions} series={chartOptions.series} type="bar" width="450" />}
     </div>
   );
 };

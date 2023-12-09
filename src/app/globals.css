@@ -2,12 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary: #2541B2;
-  --color-secondary: #ffffff;
-  --color-tertiary:#b35ecd52;
- 
-}
+  /* color: #5e89edda;
+  color: rgba(242, 106, 106, 0.854); */
 
 
 *,

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import ReloadIcon from "../assets/icons/Reload icon.svg";
 import DownArrowIcon from "../assets/icons/Arrow down.svg";
@@ -5,6 +6,8 @@ import DollarIcon from "../assets/icons/Dollar.svg";
 import ListIcon from "../assets/icons/list.svg";
 import PercentageChart from "../components/PercentageChart";
 import DailyPnlChart from "../components/DailyPnlChart";
+import ReadCsv from "../components/ReadCsv";
+// import { useState, useEffect, SyntheticEvent } from "react";
 
 const Page = () => {
   return (
@@ -20,32 +23,30 @@ const Page = () => {
         </div>
         <div className="flex flex-row mr-5 ">
           <div className="flex flex-row mr-5 cursor-pointer">
-            <Image src={ListIcon} alt="list icon" className="w-6 mr-[4px]" /> <Image src={DownArrowIcon} alt="down arrow icon" className="w-6" />
+            <Image src={ListIcon} alt="list icon" className="w-5 mr-[3px]" /> <Image src={DownArrowIcon} alt="down arrow icon" className="w-5" />
           </div>
           <div className="flex flex-row cursor-pointer">
-            <Image src={DollarIcon} alt="dollar icon" className="w-7" /> <Image src={DownArrowIcon} alt="down arrow icon" className="w-6" />
+            <Image src={DollarIcon} alt="dollar icon" className="w-6" /> <Image src={DownArrowIcon} alt="down arrow icon" className="w-5" />
           </div>
         </div>
         {/* {dashboard content} */}
       </section>
-      <section>
+      <section className="px-8 mt-10">
         {/* {Container small charts} */}
-        <div className="flex flex-row w-full">
-          <div className="w-4/12">
-            <PercentageChart />
-          </div>
-          <div className="w-4/12">
-            <PercentageChart />
-          </div>
-          <div className="w-4/12">
-            <PercentageChart />
-          </div>
+        <div className="flex flex-row w-full items-center justify-between">
+          <PercentageChart />
+          <PercentageChart />
+          <PercentageChart />
+          <PercentageChart />
         </div>
-        {/* {container big charts} */}
-        <div>
+        {/* {container medium charts} */}
+        <div className="mt-10 flex flex-row w-full justify-between">
+          <DailyPnlChart />
+          <DailyPnlChart />
           <DailyPnlChart />
         </div>
       </section>
+      <ReadCsv />
     </main>
   );
 };
