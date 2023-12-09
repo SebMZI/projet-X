@@ -5,11 +5,12 @@
   /* color: #5e89edda;
   color: rgba(242, 106, 106, 0.854); */
 
-
+  
 *,
 ::after,
 ::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: #d681f04b;
 }
