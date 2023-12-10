@@ -5,6 +5,8 @@ import Link from "next/link";
 import Button from "./components/Button";
 import landingImage from "@/app/assets/icons/landingImage.svg";
 import circleIcon from "@/app/assets/icons/circleIcon.svg";
+import mt5Icon from "@/app/assets/icons/mt5Icon.svg";
+import mt4Icon from "@/app/assets/icons/mt4Icon.svg";
 
 export default function Home() {
   return (
@@ -46,6 +48,16 @@ export default function Home() {
               greater profitability.
             </p>
             <Button />
+            <div className="mt-4 flex flex-row ">
+              <Image
+                src={mt4Icon}
+                alt="metatrader Icon only available for this platform."
+              />
+              <Image
+                src={mt5Icon}
+                alt="metatradde Icon only available for this platform."
+              />
+            </div>
           </div>
           <Image
             src={landingImage}
@@ -72,7 +84,6 @@ export default function Home() {
               asset that propels your trading endeavors to new heights.
             </p>
           </div>
-          <div>cc</div>
         </section>
       </main>
     </div>
