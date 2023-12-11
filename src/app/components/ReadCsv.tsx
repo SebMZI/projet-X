@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Papa from "papaparse";
 
 interface History {
@@ -74,42 +74,67 @@ interface Data {
 }
 
 const MyComponent: React.FC = () => {
-  useEffect(() => {
-    const handleFileChange = async (event: Event) => {
-      const fileInput = event.target as HTMLInputElement;
-      if (fileInput.files && fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        if (file) {
-          handleAnalyse(file);
-        }
-      }
-    };
-    const handleAnalyse = (file: File) => {
-      console.log(file);
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const fileInput = event.target as HTMLInputElement;
+    const file = fileInput.files?.[0];
+
+    if (file) {
       Papa.parse(file, {
         header: false,
         skipEmptyLines: true,
-        complete(results) {
-          const rows = results.data;
-          const categoryIndices: number[] = [];
+        complete: function (results) {
+          const data = results.data;
+
+          // Identifiez les indices de début et de fin des différentes sections
+          const historyStartIndex = data.findIndex((row) =>
+            row[0]?.toLowerCase().includes("trade history report")
+          );
+          const positionsStartIndex = data.findIndex((row) =>
+            row[0]?.toLowerCase().includes("positions")
+          );
+          const ordersStartIndex = data.findIndex((row) =>
+            row[0]?.toLowerCase().includes("orders")
+          );
+          const dealsStartIndex = data.findIndex((row) =>
+            row[0]?.toLowerCase().includes("deals")
+          );
+          const resultStartIndex = data.findIndex((row) =>
+            row[0]?.toLowerCase().includes("result")
+          );
+          const endIndices = [
+            positionsStartIndex,
+            ordersStartIndex,
+            dealsStartIndex,
+            resultStartIndex,
+          ].filter((index) => index !== -1);
+          let indexes: number[] = [];
           let obj: Data = {} as Data;
-          rows.map((row: any, index: number) => {
+
+          data.forEach((innerArray, index) => {
+            // Vérifier si le premier élément est une chaîne non vide
+            // et si les 13 éléments suivants sont des chaînes vides
             if (
-              row[0].length > 0 &&
-              row.slice(1).every((element: string) => element === "")
+              innerArray.length === 14 &&
+              typeof innerArray[0] === "string" &&
+              innerArray[0].trim() !== "" &&
+              innerArray.slice(1).every((element) => element === "")
             ) {
-              categoryIndices.push(index);
+              indexes.push(index);
             }
           });
+          console.log(indexes);
 
-          const history: any[] = rows.slice(0, 5);
+          // Séparez les données en différentes parties en utilisant les indices
+
+          // Faites quelque chose avec les trois parties
+          const history: any[] = data.slice(0, 5);
           obj.history = {
             date: history[4][3],
             name: history[1][3],
             company: history[3][3],
             account: history[2][3],
           };
-          const positions = rows.slice(categoryIndices[1], categoryIndices[2]);
+          const positions = data.slice(indexes[1], indexes[2]);
           obj.positions = positions
             .slice(2, positions.length)
             .map((position: any) => ({
@@ -126,7 +151,7 @@ const MyComponent: React.FC = () => {
               profit: position[12],
             }));
 
-          const orders = rows.slice(categoryIndices[2], categoryIndices[3]);
+          const orders = data.slice(indexes[2], indexes[3]);
           obj.orders = orders.slice(2, orders.length).map((order: any) => ({
             openTime: order[0],
             order: order[1],
@@ -137,7 +162,7 @@ const MyComponent: React.FC = () => {
             stopLoss: order[6],
             target: order[7],
           }));
-          const deals = rows.slice(categoryIndices[3], categoryIndices[4]);
+          const deals = data.slice(indexes[3], indexes[4]);
           obj.deals = deals.slice(2, deals.length - 20).map((deal: any) => ({
             time: deal[0],
             deal: deal[1],
@@ -153,7 +178,7 @@ const MyComponent: React.FC = () => {
             profit: deal[11],
             balance: deal[12],
           }));
-          const result: any[] = rows.slice(rows.length - 13, rows.length);
+          const result: any[] = data.slice(data.length - 13, data.length);
           obj.results = {
             totalNetProfit: result[1][3],
             profitFactor: result[2][3],
@@ -169,26 +194,30 @@ const MyComponent: React.FC = () => {
             averageProfitTrade: result[9][7],
             averageLossTrade: result[9][11],
           };
-          console.log(result);
-
           console.log(obj);
         },
       });
-    };
-    const fileInput = document.getElementById("fileInput");
-    if (fileInput) {
-      fileInput.addEventListener("change", handleFileChange);
     }
-    return () => {
-      if (fileInput) {
-        fileInput.removeEventListener("change", handleFileChange);
-      }
-    };
-  }, []);
+  };
 
   return (
-    <div>
-      <input type="file" accept=".csv" id="fileInput" />
+    <div className="custom-file-input">
+      <label htmlFor="fileInput" className="file-label">
+        Select your file
+      </label>
+      <input
+        type="file"
+        id="fileInput"
+        name="file"
+        accept=".csv"
+        onChange={changeHandler}
+        className="mt-10 block  text-sm text-slate-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-[#d681f035]] file:text-[#5903A4]
+          hover:file:bg-[#d681f04b] cursor-pointer"
+      />
     </div>
   );
 };
