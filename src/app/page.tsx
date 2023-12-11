@@ -85,6 +85,7 @@ export default function Home() {
             </p>
           </div>
         </section>
+        <section className="w-full bg-black"></section>
       </main>
     </div>
   );
