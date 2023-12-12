@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "@types/csv-parse": "^1.2.2",
     "apexcharts": "^3.44.2",
     "csv-parse": "^5.5.3",
@@ -16,7 +17,8 @@
     "papaparse": "^5.4.1",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-redux": "^9.0.4"
   },
   "devDependencies": {
     "@types/node": "^20",
